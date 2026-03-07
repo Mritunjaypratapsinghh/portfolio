@@ -1,6 +1,6 @@
 const API_BASE = (window.location.hostname === 'localhost' || window.location.hostname === '')
   ? 'http://localhost:8000'
-  : 'https://your-backend.onrender.com';
+  : 'https://portfolio-api-8j7b.onrender.com';
 
 let resumeBlobUrl = null;
 
