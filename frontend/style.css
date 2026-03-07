@@ -278,12 +278,14 @@ footer { text-align:center; padding:24px; font-size:.75rem; color:#52525b; borde
   background: var(--accent);
   color: var(--bg);
   border: none;
-  cursor: pointer;
+  cursor: grab;
   font-size: 1.4rem;
   box-shadow: 0 4px 20px rgba(100, 255, 218, 0.3);
   z-index: 1000;
   transition: transform 0.2s, box-shadow 0.2s;
+  user-select: none;
 }
+#chat-toggle:active { cursor: grabbing; }
 #chat-toggle:hover { transform: scale(1.1); box-shadow: 0 6px 30px rgba(100, 255, 218, 0.5); }
 #chat-toggle.hidden { display: none; }
 
@@ -313,7 +315,9 @@ footer { text-align:center; padding:24px; font-size:.75rem; color:#52525b; borde
   border-bottom: 1px solid var(--border);
   font-weight: 600;
   color: var(--accent);
+  cursor: grab;
 }
+.chat-header:active { cursor: grabbing; }
 .chat-header button {
   background: none;
   border: none;

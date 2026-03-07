@@ -191,3 +191,26 @@ async function sendChat(e) {
   }
   messages.scrollTop = messages.scrollHeight;
 }
+
+// ===== Draggable =====
+function makeDraggable(el, handle) {
+  let isDragging = false, startX, startY, startLeft, startTop;
+  (handle || el).addEventListener('mousedown', e => {
+    if (e.target.closest('button, input, textarea, a')) return;
+    isDragging = true;
+    startX = e.clientX; startY = e.clientY;
+    const rect = el.getBoundingClientRect();
+    startLeft = rect.left; startTop = rect.top;
+    el.style.transition = 'none';
+    e.preventDefault();
+  });
+  document.addEventListener('mousemove', e => {
+    if (!isDragging) return;
+    el.style.left = Math.max(0, Math.min(window.innerWidth - el.offsetWidth, startLeft + e.clientX - startX)) + 'px';
+    el.style.top = Math.max(0, Math.min(window.innerHeight - el.offsetHeight, startTop + e.clientY - startY)) + 'px';
+    el.style.right = 'auto'; el.style.bottom = 'auto';
+  });
+  document.addEventListener('mouseup', () => { isDragging = false; el.style.transition = ''; });
+}
+makeDraggable(document.getElementById('chat-toggle'));
+makeDraggable(document.getElementById('chat-widget'), document.querySelector('.chat-header'));
