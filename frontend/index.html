@@ -241,8 +241,9 @@
   <div id="chat-widget" class="hidden">
     <div class="chat-header">
       <span><i class="fas fa-robot"></i> Ask me anything</span>
-      <div>
-        <a href="chat.html" title="Open full chat" style="color:var(--text-muted);margin-right:12px;"><i class="fas fa-expand"></i></a>
+      <div class="chat-header-actions">
+        <button onclick="resizeChat()" title="Resize"><i class="fas fa-expand"></i></button>
+        <a href="chat.html" title="Open full page"><i class="fas fa-up-right-from-square"></i></a>
         <button onclick="toggleChat()"><i class="fas fa-xmark"></i></button>
       </div>
     </div>

@@ -162,6 +162,13 @@ function toggleChat() {
   document.getElementById('chat-toggle').classList.toggle('hidden');
 }
 
+function resizeChat() {
+  const widget = document.getElementById('chat-widget');
+  widget.classList.toggle('expanded');
+  const icon = event.currentTarget.querySelector('i');
+  icon.className = widget.classList.contains('expanded') ? 'fas fa-compress' : 'fas fa-expand';
+}
+
 async function sendChat(e) {
   e.preventDefault();
   const input = document.getElementById('chat-input');
