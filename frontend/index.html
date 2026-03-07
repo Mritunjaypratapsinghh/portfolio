@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mritunjay Pratap Singh — Backend Engineer</title>
+  <meta name="description" content="Backend Software Engineer building scalable microservices, event-driven systems & REST APIs. 2+ years experience with Python, FastAPI, Django.">
+  <meta property="og:title" content="Mritunjay Pratap Singh — Backend Engineer">
+  <meta property="og:description" content="Backend Software Engineer building scalable microservices & REST APIs.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Scroll Progress -->
+  <div id="scroll-progress"></div>
+
+  <!-- Back to Top -->
+  <button id="back-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+
+  <!-- Dot Grid BG -->
+  <div class="dot-bg"></div>
+
+  <header>
+    <nav>
+      <a href="#" class="logo">M.</a>
+      <div class="nav-links" id="nav-links">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+        <a href="assets/resume.pdf" download class="nav-cta">Resume ↓</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span></button>
+    </nav>
+  </header>
+
+  <main>
+
+    <section id="hero">
+      <div class="hero-grid">
+        <div class="hero-left">
+          <div class="hero-badge anim" style="--d:0">Backend Engineer</div>
+          <h1 class="anim shimmer-text" style="--d:1">Mritunjay<br>Pratap Singh</h1>
+          <p class="anim" style="--d:2">I build scalable microservices, event-driven systems, and REST APIs that handle 100K+ daily transactions. Currently engineering backend systems at Kogta Financial.</p>
+          <div class="hero-actions anim" style="--d:3">
+            <a href="assets/resume.pdf" download class="btn-primary"><i class="fas fa-arrow-down"></i> Resume</a>
+            <button class="btn-secondary" onclick="openModal()"><i class="fas fa-wand-magic-sparkles"></i> AI Tailored Resume</button>
+            <div class="hero-links">
+              <a href="https://github.com/mritunjay-pratap-singh" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+              <a href="https://linkedin.com/in/mritunjay-pratap-singh" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              <a href="https://leetcode.com/mritunjay-pratap-singh" target="_blank" aria-label="LeetCode"><i class="fas fa-code"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="hero-right anim" style="--d:2">
+          <div class="terminal">
+            <div class="terminal-bar"><span></span><span></span><span></span></div>
+            <pre><code><span class="t-gray">#!/usr/bin/env python3</span>
+
+<span class="t-purple">class</span> <span class="t-white">BackendEngineer</span>:
+    name    = <span class="t-green">"Mritunjay"</span>
+    role    = <span class="t-green">"Software Developer"</span>
+    stack   = [<span class="t-green">"FastAPI"</span>, <span class="t-green">"Flask"</span>,
+               <span class="t-green">"PostgreSQL"</span>, <span class="t-green">"MongoDB"</span>]
+    passion = <span class="t-green">"Building systems that scale"</span>
+
+    <span class="t-purple">def</span> <span class="t-white">daily</span>(self):
+        <span class="t-purple">return</span> <span class="t-green">"100K+ messages processed ✓"</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <p class="label anim-s">About</p>
+      <div class="about-text anim-s">
+        <p class="big-text">I'm a backend engineer who loves building systems that are fast, reliable, and elegant under the hood.</p>
+        <p>With 2+ years of experience, I specialize in Python, FastAPI, and event-driven architectures. I've built communication platforms processing 100K+ daily messages, multi-vendor integrations, and payment reconciliation engines.</p>
+      </div>
+      <div class="metrics anim-s">
+        <div class="metric"><span>2+</span>Years</div>
+        <div class="metric"><span>100K+</span>Daily Msgs</div>
+        <div class="metric"><span>40+</span>APIs</div>
+        <div class="metric"><span>3</span>Services</div>
+      </div>
+      <div class="chips anim-s">
+        <span>Python</span><span>FastAPI</span><span>Flask</span><span>Django</span><span>PostgreSQL</span><span>MongoDB</span><span>MySQL</span><span>AWS SQS</span><span>AWS S3</span><span>Docker</span><span>Redis</span><span>REST APIs</span><span>Celery</span><span>OpenSearch</span><span>SQLAlchemy</span><span>SQLModel</span><span>Beanie ODM</span><span>Pandas</span><span>Git</span>
+      </div>
+      <div class="learning anim-s">
+        <p class="learning-label">🚀 Currently exploring</p>
+        <div class="chips glow-chips">
+          <span>Kubernetes</span><span>System Design</span><span>Go</span><span>Apache Kafka</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="section">
+      <p class="label anim-s">Experience</p>
+      <div class="exp-list">
+        <div class="exp-card anim-s">
+          <div class="exp-left">
+            <span class="exp-date">Jul 2025 — Present</span>
+          </div>
+          <div class="exp-right">
+            <h3>Software Developer · <span>Kogta Financial India Limited</span></h3>
+            <ul>
+              <li>Architected Communication Aggregator Service with FastAPI, MongoDB (Beanie ODM), MySQL, and Redis, processing 100K+ daily messages across WhatsApp/SMS/RCS for 4 business verticals with 40+ REST APIs and AWS SQS-based async processing.</li>
+              <li>Built multi-vendor Dialer Service using Flask with orchestrator pattern — vendor detection, RBI-compliant number selection, and fallback logic with Redis caching, reducing manual effort by 80% for 50+ agents.</li>
+              <li>Developed Receivable Engine for NACH/Cheque processing with FastAPI, PostgreSQL (SQLModel + asyncpg), and multi-stage AWS SQS pipelines for validation, realization, and reversal workflows.</li>
+              <li>Redesigned message tracking system with unique identifiers and audit trails, improving traceability by 100% and reducing support resolution time by 50%.</li>
+            </ul>
+            <div class="exp-tags"><span>FastAPI</span><span>Flask</span><span>MongoDB</span><span>PostgreSQL</span><span>MySQL</span><span>AWS SQS</span><span>Redis</span><span>OpenSearch</span><span>Docker</span></div>
+          </div>
+        </div>
+        <div class="exp-card anim-s">
+          <div class="exp-left">
+            <span class="exp-date">Feb 2023 — Nov 2024</span>
+          </div>
+          <div class="exp-right">
+            <h3>Python TA · <span>Coding Ninjas</span></h3>
+            <ul>
+              <li>Developed internal tools using Django, DRF, and PostgreSQL to automate student support workflows.</li>
+              <li>Built and optimized REST APIs for real-time code evaluation and content delivery systems.</li>
+              <li>Mentored 500+ students in Python, DSA, and backend development, maintaining a 4.8/5 rating.</li>
+            </ul>
+            <div class="exp-tags"><span>Django</span><span>DRF</span><span>PostgreSQL</span><span>REST APIs</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <p class="label anim-s">Projects</p>
+      <div class="project-grid">
+        <div class="project-card anim-s stagger" style="--s:0">
+          <div class="project-head">
+            <h3>Communication Aggregator Service</h3>
+            <span class="project-badge">Internal</span>
+          </div>
+          <p>Multi-vertical communication platform processing 100K+ daily messages across WhatsApp, SMS, and RCS for CRM, LMS, LOS verticals.</p>
+          <ul>
+            <li>Event-driven architecture with AWS SQS for async batch processing, Redis + RQ for job scheduling, and webhook handling.</li>
+            <li>Integrated MongoDB (Beanie ODM) for message storage, MySQL for origination data, and OpenSearch for lead analytics.</li>
+            <li>Self-service Excel upload with Pandas processing, reducing campaign launch time from days to hours.</li>
+          </ul>
+          <div class="project-tags"><span>FastAPI</span><span>MongoDB</span><span>Beanie ODM</span><span>MySQL</span><span>AWS SQS</span><span>Redis</span><span>RQ</span><span>OpenSearch</span><span>Pandas</span></div>
+        </div>
+        <div class="project-card anim-s stagger" style="--s:1">
+          <div class="project-head">
+            <h3>Multi-Vendor Dialer Service</h3>
+            <span class="project-badge">Internal</span>
+          </div>
+          <p>Extensible adapter framework with orchestrator pattern supporting Ozonetel, Knowlarity, and Exotel with RBI-compliant automated number selection.</p>
+          <ul>
+            <li>Built vendor detection, RBI-compliant number selector, and fallback orchestration with Redis-backed caching.</li>
+            <li>Real-time webhook processing for call status updates, CDR logging, and automated call recording retrieval via AWS S3.</li>
+            <li>Agent management APIs with role-based access, call assignment, and performance tracking dashboards.</li>
+          </ul>
+          <div class="project-tags"><span>Flask</span><span>MongoDB</span><span>Redis</span><span>SQLAlchemy</span><span>AWS S3</span><span>Pydantic</span></div>
+        </div>
+        <div class="project-card anim-s stagger" style="--s:2">
+          <div class="project-head">
+            <h3>Receivable Engine (NACH Processing)</h3>
+            <span class="project-badge">Internal</span>
+          </div>
+          <p>Automated payment reconciliation system handling NACH and cheque processing with batch validation, realization, and bank reversal workflows.</p>
+          <ul>
+            <li>Event-driven architecture with multiple AWS SQS queues for upload, validation, realization, reversal, and email notification stages.</li>
+            <li>Async PostgreSQL with SQLModel + asyncpg, worker-consumer pattern for background processing.</li>
+            <li>Automated bank file parsing with Pandas and multi-format export for reconciliation reports.</li>
+          </ul>
+          <div class="project-tags"><span>FastAPI</span><span>PostgreSQL</span><span>SQLModel</span><span>asyncpg</span><span>AWS SQS</span><span>Pandas</span><span>HTTPX</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="education" class="section">
+      <p class="label anim-s">Education</p>
+      <div class="edu-card anim-s">
+        <h3>B.Tech in Computer Science Engineering</h3>
+        <p>Dr. A. P. J. Abdul Kalam Technical University</p>
+        <span class="edu-meta">2019 — 2023 · CGPA: 8.6</span>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact-section">
+      <p class="label anim-s">Contact</p>
+      <h2 class="anim-s">Let's work together.</h2>
+      <p class="anim-s">I'm open to new opportunities. Drop me a line and let's talk.</p>
+      <div class="contact-actions anim-s">
+        <a href="mailto:mritunjaypratapsinghh@gmail.com" class="btn-primary">mritunjaypratapsinghh@gmail.com</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-links">
+      <a href="https://github.com/mritunjay-pratap-singh" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://linkedin.com/in/mritunjay-pratap-singh" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://leetcode.com/mritunjay-pratap-singh" target="_blank"><i class="fas fa-code"></i></a>
+    </div>
+    <p>Mritunjay Pratap Singh · 2026</p>
+  </footer>
+
+  <!-- AI Resume Modal -->
+  <div id="modal-overlay" class="modal-overlay" onclick="if(event.target===this)closeModal()">
+    <div class="modal">
+      <button class="modal-x" onclick="closeModal()"><i class="fas fa-xmark"></i></button>
+      <div class="modal-tabs">
+        <button class="modal-tab active" onclick="switchTab('generate')"><i class="fas fa-wand-magic-sparkles"></i> Generate</button>
+        <button class="modal-tab" onclick="switchTab('ats')"><i class="fas fa-chart-simple"></i> ATS Score</button>
+      </div>
+      <p id="tab-desc">Paste a job description. I'll tailor my resume to match — same format, optimized keywords.</p>
+      <textarea id="jd-input" placeholder="Paste the job description here..." rows="7"></textarea>
+      <!-- Generate tab -->
+      <div id="gen-actions">
+        <button id="gen-btn" class="btn-primary full" onclick="generateResume()"><i class="fas fa-bolt"></i> Generate Resume</button>
+        <div id="gen-loading" class="loading hidden"><div class="spinner"></div>Generating tailored resume...</div>
+        <div id="gen-done" class="hidden">
+          <p class="done-msg"><i class="fas fa-check"></i> Ready</p>
+          <button class="btn-primary full" onclick="downloadResume()"><i class="fas fa-arrow-down"></i> Download PDF</button>
+        </div>
+      </div>
+      <!-- ATS tab -->
+      <div id="ats-actions" class="hidden">
+        <button id="ats-btn" class="btn-primary full" onclick="checkATS()"><i class="fas fa-magnifying-glass-chart"></i> Check Score</button>
+        <div id="ats-loading" class="loading hidden"><div class="spinner"></div>Analyzing match...</div>
+        <div id="ats-result" class="hidden"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

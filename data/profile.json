@@ -1,0 +1,95 @@
+{
+  "name": "Mritunjay Pratap Singh",
+  "title": "Backend Software Engineer",
+  "tagline": "Building scalable microservices, event-driven systems & REST APIs",
+  "location": "Gurugram, Haryana",
+  "phone": "+91-7347760567",
+  "email": "mritunjaypratapsinghh@gmail.com",
+  "linkedin": "https://linkedin.com/in/mritunjay-pratap-singh",
+  "github": "https://github.com/mritunjay-pratap-singh",
+  "leetcode": "https://leetcode.com/mritunjay-pratap-singh",
+  "photo": "assets/photo.jpg",
+  "summary": "Backend Software Engineer with 2+ years building scalable microservices, event-driven systems, and REST APIs. Proven expertise in Python, FastAPI, Django, and cloud technologies with a track record of delivering production-grade solutions.",
+  "skills": {
+    "Languages": ["Python", "Java"],
+    "Backend": ["FastAPI", "Flask", "Django", "DRF", "Spring Boot"],
+    "Databases": ["PostgreSQL", "MongoDB", "MySQL", "Redis", "SQLite"],
+    "ORMs": ["SQLAlchemy", "SQLModel", "Beanie ODM", "asyncpg"],
+    "Cloud & DevOps": ["AWS SQS", "AWS S3", "Docker", "Git", "GitLab CI/CD"],
+    "Queues & Search": ["AWS SQS", "Redis", "RQ", "OpenSearch", "Celery"],
+    "Tools": ["REST APIs", "Webhooks", "OAuth 2.0", "Pandas", "HTTPX", "Postman", "JIRA", "Swagger"],
+    "Concepts": ["Microservices", "Event-driven Architecture", "Multi-tenant Systems", "Orchestrator Pattern", "DSA", "OOP", "DBMS"]
+  },
+  "experience": [
+    {
+      "company": "Kogta Financial India Limited",
+      "role": "Software Developer",
+      "location": "Gurugram",
+      "start": "July 2025",
+      "end": "Present",
+      "highlights": [
+        "Architected Communication Aggregator Service with FastAPI, MongoDB (Beanie ODM), MySQL, and Redis, processing 100K+ daily messages across WhatsApp/SMS/RCS for 4 business verticals with 40+ REST APIs and AWS SQS-based async processing.",
+        "Built multi-vendor Dialer Service using Flask with orchestrator pattern — vendor detection, RBI-compliant number selection, and fallback logic with Redis caching, reducing manual effort by 80% for 50+ agents.",
+        "Developed Receivable Engine for NACH/Cheque processing with FastAPI, PostgreSQL (SQLModel + asyncpg), and multi-stage AWS SQS pipelines for validation, realization, and reversal workflows.",
+        "Redesigned message tracking system with unique identifiers and audit trails, improving traceability by 100% and reducing support resolution time by 50%."
+      ]
+    },
+    {
+      "company": "Coding Ninjas",
+      "role": "Python TA",
+      "location": "Gurugram",
+      "start": "Feb 2023",
+      "end": "Nov 2024",
+      "highlights": [
+        "Developed internal tools using Django, DRF, and PostgreSQL to automate student support workflows.",
+        "Built and optimized REST APIs for real-time code evaluation and content delivery systems."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Communication Aggregator Service",
+      "tech": ["FastAPI", "MongoDB", "Beanie ODM", "MySQL", "AWS SQS", "Redis", "RQ", "OpenSearch", "Pandas"],
+      "description": "Multi-vertical communication platform processing 100K+ daily messages across WhatsApp, SMS, and RCS.",
+      "highlights": [
+        "Event-driven architecture with AWS SQS for async batch processing, Redis + RQ for job scheduling, and webhook handling.",
+        "Integrated MongoDB (Beanie ODM) for message storage, MySQL for origination data, and OpenSearch for lead analytics.",
+        "Self-service Excel upload with Pandas processing, reducing campaign launch time from days to hours."
+      ],
+      "github": "",
+      "demo": ""
+    },
+    {
+      "name": "Multi-Vendor Dialer Service",
+      "tech": ["Flask", "MongoDB", "Redis", "SQLAlchemy", "AWS S3", "Pydantic"],
+      "description": "Extensible adapter framework with orchestrator pattern supporting Ozonetel, Knowlarity, and Exotel with RBI-compliant automated number selection.",
+      "highlights": [
+        "Built vendor detection, RBI-compliant number selector, and fallback orchestration with Redis-backed caching.",
+        "Real-time webhook processing for call status updates, CDR logging, and automated call recording retrieval via AWS S3."
+      ],
+      "github": "",
+      "demo": ""
+    },
+    {
+      "name": "Receivable Engine (NACH Processing)",
+      "tech": ["FastAPI", "PostgreSQL", "SQLModel", "asyncpg", "AWS SQS", "Pandas", "HTTPX"],
+      "description": "Automated payment reconciliation system handling NACH and cheque processing with batch validation, realization, and reversal workflows.",
+      "highlights": [
+        "Event-driven architecture with multiple AWS SQS queues for upload, validation, realization, reversal, and email notification stages.",
+        "Async PostgreSQL with SQLModel + asyncpg, worker-consumer pattern for background processing."
+      ],
+      "github": "",
+      "demo": ""
+    }
+  ],
+  "education": [
+    {
+      "institution": "Dr. A. P. J. Abdul Kalam Technical University",
+      "degree": "B.Tech in Computer Science Engineering",
+      "start": "July 2019",
+      "end": "June 2023",
+      "cgpa": "8.6"
+    }
+  ],
+  "certifications": []
+}
