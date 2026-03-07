@@ -171,24 +171,48 @@ async function sendChat(e) {
   const messages = document.getElementById('chat-messages');
   messages.innerHTML += `<div class="chat-msg user">${msg}</div>`;
   input.value = '';
+  input.disabled = true;
   messages.scrollTop = messages.scrollHeight;
   
-  messages.innerHTML += `<div class="chat-msg bot typing"><span></span><span></span><span></span></div>`;
+  const botMsg = document.createElement('div');
+  botMsg.className = 'chat-msg bot';
+  botMsg.innerHTML = '<span class="cursor">▊</span>';
+  messages.appendChild(botMsg);
   messages.scrollTop = messages.scrollHeight;
   
   try {
-    const res = await fetch(`${API_BASE}/chat`, {
+    const res = await fetch(`${API_BASE}/chat/stream`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ message: msg }),
     });
-    const data = await res.json();
-    messages.querySelector('.typing').remove();
-    messages.innerHTML += `<div class="chat-msg bot">${data.reply}</div>`;
+    
+    const reader = res.body.getReader();
+    const decoder = new TextDecoder();
+    let text = '';
+    
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      
+      const chunk = decoder.decode(value);
+      const lines = chunk.split('\n');
+      
+      for (const line of lines) {
+        if (line.startsWith('data: ') && line !== 'data: [DONE]') {
+          const data = JSON.parse(line.slice(6));
+          text += data.content;
+          botMsg.innerHTML = text + '<span class="cursor">▊</span>';
+          messages.scrollTop = messages.scrollHeight;
+        }
+      }
+    }
+    botMsg.innerHTML = text;
   } catch {
-    messages.querySelector('.typing').remove();
-    messages.innerHTML += `<div class="chat-msg bot">Sorry, I couldn't connect. Is the backend running?</div>`;
+    botMsg.innerHTML = "Sorry, I couldn't connect. Is the backend running?";
   }
+  input.disabled = false;
+  input.focus();
   messages.scrollTop = messages.scrollHeight;
 }
 

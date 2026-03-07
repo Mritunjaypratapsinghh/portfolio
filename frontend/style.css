@@ -375,6 +375,15 @@ footer { text-align:center; padding:24px; font-size:.75rem; color:#52525b; borde
   40% { transform: scale(1); }
 }
 
+.cursor {
+  animation: blink 1s infinite;
+  color: var(--accent);
+}
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
 #chat-form {
   display: flex;
   gap: 8px;

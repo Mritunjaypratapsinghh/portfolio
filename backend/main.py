@@ -245,3 +245,26 @@ async def chat(req: ChatRequest):
         return {"reply": response.choices[0].message.content}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+from fastapi.responses import StreamingResponse
+
+@app.post("/chat/stream")
+async def chat_stream(req: ChatRequest):
+    def generate():
+        stream = client.chat.completions.create(
+            model=os.getenv("LLM_MODEL"),
+            messages=[
+                {"role": "system", "content": CHAT_SYSTEM_PROMPT},
+                {"role": "user", "content": req.message},
+            ],
+            temperature=0.7,
+            max_tokens=300,
+            stream=True,
+        )
+        for chunk in stream:
+            if chunk.choices[0].delta.content:
+                yield f"data: {json.dumps({'content': chunk.choices[0].delta.content})}\n\n"
+        yield "data: [DONE]\n\n"
+    
+    return StreamingResponse(generate(), media_type="text/event-stream")
