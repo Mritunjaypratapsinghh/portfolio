@@ -33,6 +33,10 @@ class ResumeRequest(BaseModel):
     job_description: str
 
 
+class ChatRequest(BaseModel):
+    message: str
+
+
 SYSTEM_PROMPT = f"""You are a resume tailoring expert. Given a job description, generate tailored resume content.
 
 CANDIDATE PROFILE:
@@ -212,3 +216,32 @@ async def generate_resume(req: ResumeRequest):
 @app.get("/health")
 async def health():
     return {"status": "ok"}
+
+
+CHAT_SYSTEM_PROMPT = f"""You are Mritunjay's AI assistant on his portfolio website. Answer questions about him based ONLY on this profile:
+
+{json.dumps(PROFILE, indent=2)}
+
+RULES:
+- Answer in first person as if you ARE Mritunjay (e.g., "I have 2+ years of experience...")
+- Be concise, friendly, and professional
+- Only answer questions about Mritunjay's skills, experience, projects, education, or contact
+- For unrelated questions, politely redirect: "I can tell you about my skills, projects, or experience. What would you like to know?"
+- Keep responses under 3 sentences unless more detail is needed"""
+
+
+@app.post("/chat")
+async def chat(req: ChatRequest):
+    try:
+        response = client.chat.completions.create(
+            model=os.getenv("LLM_MODEL"),
+            messages=[
+                {"role": "system", "content": CHAT_SYSTEM_PROMPT},
+                {"role": "user", "content": req.message},
+            ],
+            temperature=0.7,
+            max_tokens=300,
+        )
+        return {"reply": response.choices[0].message.content}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))

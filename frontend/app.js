@@ -154,3 +154,40 @@ async function checkATS() {
     alert('Error — is the backend running?');
   }
 }
+
+
+// ===== Chatbot =====
+function toggleChat() {
+  document.getElementById('chat-widget').classList.toggle('hidden');
+  document.getElementById('chat-toggle').classList.toggle('hidden');
+}
+
+async function sendChat(e) {
+  e.preventDefault();
+  const input = document.getElementById('chat-input');
+  const msg = input.value.trim();
+  if (!msg) return;
+  
+  const messages = document.getElementById('chat-messages');
+  messages.innerHTML += `<div class="chat-msg user">${msg}</div>`;
+  input.value = '';
+  messages.scrollTop = messages.scrollHeight;
+  
+  messages.innerHTML += `<div class="chat-msg bot typing"><span></span><span></span><span></span></div>`;
+  messages.scrollTop = messages.scrollHeight;
+  
+  try {
+    const res = await fetch(`${API_BASE}/chat`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: msg }),
+    });
+    const data = await res.json();
+    messages.querySelector('.typing').remove();
+    messages.innerHTML += `<div class="chat-msg bot">${data.reply}</div>`;
+  } catch {
+    messages.querySelector('.typing').remove();
+    messages.innerHTML += `<div class="chat-msg bot">Sorry, I couldn't connect. Is the backend running?</div>`;
+  }
+  messages.scrollTop = messages.scrollHeight;
+}
