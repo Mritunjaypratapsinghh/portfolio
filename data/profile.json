@@ -9,16 +9,15 @@
   "github": "https://github.com/mritunjay-pratap-singh",
   "leetcode": "https://leetcode.com/mritunjay-pratap-singh",
   "photo": "assets/photo.jpg",
-  "summary": "Backend Software Engineer with 2+ years building scalable microservices, event-driven systems, and REST APIs. Proven expertise in Python, FastAPI, Django, and cloud technologies with a track record of delivering production-grade solutions.",
+  "summary": "Backend Software Engineer specializing in high-throughput distributed systems, event-driven microservices, and REST APIs. Delivered 600x performance improvement in production payment pipeline through async architecture, batch prefetch optimization, and concurrent processing. Building systems processing 100K+ daily transactions with Python, FastAPI, and AWS.",
   "skills": {
-    "Languages": ["Python", "Java"],
-    "Backend": ["FastAPI", "Flask", "Django", "DRF", "Spring Boot"],
-    "Databases": ["PostgreSQL", "MongoDB", "MySQL", "Redis", "SQLite"],
-    "ORMs": ["SQLAlchemy", "SQLModel", "Beanie ODM", "asyncpg"],
-    "Cloud & DevOps": ["AWS SQS", "AWS S3", "Docker", "Git", "GitLab CI/CD"],
-    "Queues & Search": ["AWS SQS", "Redis", "RQ", "OpenSearch", "Celery"],
-    "Tools": ["REST APIs", "Webhooks", "OAuth 2.0", "Pandas", "HTTPX", "Postman", "JIRA", "Swagger"],
-    "Concepts": ["Microservices", "Event-driven Architecture", "Multi-tenant Systems", "Orchestrator Pattern", "DSA", "OOP", "DBMS"]
+    "Languages": ["Python", "Java", "SQL"],
+    "Backend Frameworks": ["FastAPI", "Flask", "Django", "DRF"],
+    "Databases": ["PostgreSQL", "MongoDB", "MySQL", "MSSQL", "Redis", "OpenSearch"],
+    "Async & ORMs": ["asyncio", "SQLAlchemy", "SQLModel", "Beanie ODM", "asyncpg", "aioodbc"],
+    "Cloud & Infrastructure": ["AWS SQS/FIFO", "AWS S3", "AWS Cognito", "Docker", "GitLab CI/CD"],
+    "Architecture & Patterns": ["Microservices", "Event-Driven Architecture", "Circuit Breaker", "Weighted Round Robin", "Factory/Strategy Pattern", "Orchestrator Pattern"],
+    "Observability & Tools": ["OpenTelemetry", "Grafana", "Pandas", "HTTPX", "Pydantic", "pytest"]
   },
   "experience": [
     {
@@ -28,55 +27,74 @@
       "start": "July 2025",
       "end": "Present",
       "highlights": [
-        "Architected Communication Aggregator Service with FastAPI, MongoDB (Beanie ODM), MySQL, and Redis, processing 100K+ daily messages across WhatsApp/SMS/RCS for 4 business verticals with 40+ REST APIs and AWS SQS-based async processing.",
-        "Built multi-vendor Dialer Service using Flask with orchestrator pattern — vendor detection, RBI-compliant number selection, and fallback logic with Redis caching, reducing manual effort by 80% for 50+ agents.",
-        "Developed Receivable Engine for NACH/Cheque processing with FastAPI, PostgreSQL (SQLModel + asyncpg), and multi-stage AWS SQS pipelines for validation, realization, and reversal workflows.",
-        "Redesigned message tracking system with unique identifiers and audit trails, improving traceability by 100% and reducing support resolution time by 50%."
+        "Achieved 600x throughput improvement in payment processing engine by implementing batch prefetch (19,000 → 10 DB queries/chunk), asyncio.gather() concurrent processing, and race-safe multi-pod architecture, enabling 100K+ records in 54 min (previously timed out at 1K).",
+        "Architected multi-channel Communication Aggregator processing 100K+ daily messages across WhatsApp/SMS/RCS with event-driven AWS SQS pipelines, multi-database integration (MongoDB, MySQL, MSSQL, OpenSearch), and 174+ automated tests.",
+        "Designed multi-vendor Dialer Service with Weighted Round Robin routing, circuit breaker for automatic vendor failover, and RBI-compliant number selection using Redis-backed state management, reducing manual effort by 80% for 50+ agents.",
+        "Built 6-stage async payment pipeline (Upload → Validation → Realization → Bank Response → Reversal → Bounce Recovery) with SQS FIFO queues, dual-database async I/O (PostgreSQL + MSSQL), and semaphore-controlled parallel API calls achieving 25x speedup.",
+        "Engineered Collection Allocation Engine with Haversine-based proximity matching (lat-long → pincode → branch → cross-cluster), weight-based distribution, and executive stickiness algorithm for fair workload across 4 product tracks."
       ]
     },
     {
       "company": "Coding Ninjas",
-      "role": "Python TA",
+      "role": "Python Teaching Assistant",
       "location": "Gurugram",
       "start": "Feb 2023",
       "end": "Nov 2024",
       "highlights": [
-        "Developed internal tools using Django, DRF, and PostgreSQL to automate student support workflows.",
-        "Built and optimized REST APIs for real-time code evaluation and content delivery systems."
+        "Developed internal automation tools using Django, DRF, and PostgreSQL, reducing student query resolution time by 40%.",
+        "Built and optimized REST APIs for real-time code evaluation serving 500+ concurrent students."
       ]
     }
   ],
   "projects": [
     {
-      "name": "Communication Aggregator Service",
-      "tech": ["FastAPI", "MongoDB", "Beanie ODM", "MySQL", "AWS SQS", "Redis", "RQ", "OpenSearch", "Pandas"],
-      "description": "Multi-vertical communication platform processing 100K+ daily messages across WhatsApp, SMS, and RCS.",
+      "name": "Receivable Engine — NACH/Cheque Processing",
+      "tech": ["FastAPI", "PostgreSQL", "MSSQL", "SQLModel", "asyncpg", "aioodbc", "AWS SQS FIFO", "asyncio", "Pandas", "HTTPX", "OpenTelemetry"],
+      "description": "High-throughput payment reconciliation system with 6-stage event-driven pipeline processing 100K+ records.",
       "highlights": [
-        "Event-driven architecture with AWS SQS for async batch processing, Redis + RQ for job scheduling, and webhook handling.",
-        "Integrated MongoDB (Beanie ODM) for message storage, MySQL for origination data, and OpenSearch for lead analytics.",
-        "Self-service Excel upload with Pandas processing, reducing campaign launch time from days to hours."
+        "Achieved 600x per-record speedup (20s → 0.03s) via batch prefetch eliminating N+1 queries, reducing 19,000 DB calls to 10 per validation chunk.",
+        "Implemented race-safe multi-pod processing with atomic status transitions (UPDATE WHERE status=X), enabling horizontal scaling with zero duplicate processing.",
+        "Parallelized external API calls using asyncio.Semaphore(25) with gather(), achieving 25x throughput improvement for realization and reversal workflows.",
+        "Designed worker-consumer architecture with graceful shutdown, isolated DB sessions per message, and mini-transactions to minimize lock contention."
+      ],
+      "github": "",
+      "demo": ""
+    },
+    {
+      "name": "Communication Aggregator Service",
+      "tech": ["FastAPI", "MongoDB", "Beanie ODM", "MySQL", "MSSQL", "Redshift", "AWS SQS", "Redis", "RQ", "OpenSearch", "AWS Cognito", "Pandas"],
+      "description": "Multi-tenant communication platform processing 100K+ daily messages across WhatsApp, SMS, and RCS for 4 business verticals.",
+      "highlights": [
+        "Designed event-driven architecture with SQS async batch processing, Redis + RQ job scheduling, and real-time webhook consumers for delivery status tracking.",
+        "Built extensible vertical system using Registry pattern (CRM, LMS, LOS, MSME) with polymorphic routing for campaign management and lead processing.",
+        "Implemented exponential backoff retry mechanism with persistent retry queue, reducing failed message rate and improving delivery reliability.",
+        "Integrated 5 databases (MongoDB, MySQL, MSSQL, Redshift, OpenSearch) with connection pooling and health checks; achieved 174+ test coverage."
       ],
       "github": "",
       "demo": ""
     },
     {
       "name": "Multi-Vendor Dialer Service",
-      "tech": ["Flask", "MongoDB", "Redis", "SQLAlchemy", "AWS S3", "Pydantic"],
-      "description": "Extensible adapter framework with orchestrator pattern supporting Ozonetel, Knowlarity, and Exotel with RBI-compliant automated number selection.",
+      "tech": ["Flask", "MongoDB", "Redis", "AWS S3", "AWS Cognito", "Pydantic"],
+      "description": "Telephony orchestration platform with intelligent traffic routing across Ozonetel, Knowlarity, and Exotel.",
       "highlights": [
-        "Built vendor detection, RBI-compliant number selector, and fallback orchestration with Redis-backed caching.",
-        "Real-time webhook processing for call status updates, CDR logging, and automated call recording retrieval via AWS S3."
+        "Implemented Weighted Round Robin router with Redis-backed cursor management and TTL-based daily reset for campaign-isolated traffic distribution.",
+        "Built circuit breaker pattern tracking consecutive failures per vendor with automatic degradation, half-open recovery, and configurable thresholds.",
+        "Designed RBI-compliant number selector with series-based WRR, customer preference tracking, and failure-based series blocking using Redis state machine.",
+        "Applied Factory + Strategy + Template Method patterns for vendor abstraction — adding new vendors requires zero changes to existing code."
       ],
       "github": "",
       "demo": ""
     },
     {
-      "name": "Receivable Engine (NACH Processing)",
-      "tech": ["FastAPI", "PostgreSQL", "SQLModel", "asyncpg", "AWS SQS", "Pandas", "HTTPX"],
-      "description": "Automated payment reconciliation system handling NACH and cheque processing with batch validation, realization, and reversal workflows.",
+      "name": "Collection Allocation Engine",
+      "tech": ["FastAPI", "MSSQL", "aioodbc", "AWS Cognito", "AWS S3", "Mappls API", "Pydantic", "YAML"],
+      "description": "Geography-aware, weight-based case allocation engine replacing manual distribution across 4 product tracks.",
       "highlights": [
-        "Event-driven architecture with multiple AWS SQS queues for upload, validation, realization, reversal, and email notification stages.",
-        "Async PostgreSQL with SQLModel + asyncpg, worker-consumer pattern for background processing."
+        "Designed pure-function allocation core (no I/O, no side effects) with 4-level proximity ladder: Haversine lat-long → pincode → branch → cross-cluster matching.",
+        "Built dual allocation models: weight-based for soft bucket and case-count/POS for hard bucket with executive stickiness for continuity.",
+        "Implemented async MSSQL with aioodbc, dual read/write connection pools, and geocode caching to minimize external API calls.",
+        "YAML-driven team configuration for weight grids and capacity rules, enabling business teams to modify allocation without code changes."
       ],
       "github": "",
       "demo": ""
