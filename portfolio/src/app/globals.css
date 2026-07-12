@@ -1,0 +1,428 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════════════════
+   CINEMATIC PORTFOLIO — THEME & GLOBAL STYLES
+   Tailwind CSS v4 — CSS-first configuration
+   ═══════════════════════════════════════════════════════ */
+
+@theme {
+  /* Colors */
+  --color-background: #050505;
+  --color-surface: #0a0a0f;
+  --color-surface-light: #111118;
+  --color-surface-lighter: #1a1a24;
+  --color-border: #1e1e2e;
+  --color-border-light: #2a2a3e;
+  --color-primary: #00d4ff;
+  --color-primary-dim: #0099cc;
+  --color-accent: #7b61ff;
+  --color-accent-dim: #5a3fd4;
+  --color-neon: #00ff88;
+  --color-neon-dim: #00cc6a;
+  --color-gold: #ffd700;
+  --color-text: #e8e8f0;
+  --color-text-secondary: #9a9abc;
+  --color-text-muted: #8a8a9e;
+
+  /* Fonts */
+  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), "JetBrains Mono", monospace;
+  --font-display: var(--font-geist-sans), system-ui, sans-serif;
+
+  /* Font sizes */
+  --text-display-xl: clamp(3rem, 8vw, 7rem);
+  --text-display-xl--line-height: 0.95;
+  --text-display-xl--letter-spacing: -0.03em;
+
+  --text-display-lg: clamp(2.5rem, 6vw, 5rem);
+  --text-display-lg--line-height: 1;
+  --text-display-lg--letter-spacing: -0.02em;
+
+  --text-display-md: clamp(2rem, 4vw, 3.5rem);
+  --text-display-md--line-height: 1.1;
+  --text-display-md--letter-spacing: -0.02em;
+
+  --text-display-sm: clamp(1.5rem, 3vw, 2.5rem);
+  --text-display-sm--line-height: 1.2;
+  --text-display-sm--letter-spacing: -0.01em;
+
+  --text-body-lg: 1.125rem;
+  --text-body-lg--line-height: 1.7;
+
+  --text-body-md: 1rem;
+  --text-body-md--line-height: 1.7;
+
+  --text-body-sm: 0.875rem;
+  --text-body-sm--line-height: 1.6;
+
+  --text-caption: 0.75rem;
+  --text-caption--line-height: 1.5;
+  --text-caption--letter-spacing: 0.05em;
+
+  /* Spacing */
+  --spacing-section: clamp(80px, 15vh, 160px);
+  --spacing-section-sm: clamp(40px, 8vh, 80px);
+
+  /* Animations */
+  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-glow: glow 2s ease-in-out infinite alternate;
+  --animate-data-flow: dataFlow 3s linear infinite;
+  --animate-fade-in: fadeIn 0.8s ease-out forwards;
+  --animate-slide-up: slideUp 0.8s ease-out forwards;
+  --animate-terminal-blink: terminalBlink 1s step-end infinite;
+  --animate-shimmer: shimmer 3s linear infinite;
+
+  /* Keyframes */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+
+  @keyframes glow {
+    0% { opacity: 0.4; filter: blur(20px); }
+    100% { opacity: 0.8; filter: blur(30px); }
+  }
+
+  @keyframes dataFlow {
+    0% { transform: translateX(-100%); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateX(100%); opacity: 0; }
+  }
+
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    0% { opacity: 0; transform: translateY(40px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes terminalBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  /* Box shadows */
+  --shadow-glow-sm: 0 0 10px rgba(0, 212, 255, 0.3);
+  --shadow-glow-md: 0 0 20px rgba(0, 212, 255, 0.4);
+  --shadow-glow-lg: 0 0 40px rgba(0, 212, 255, 0.3);
+  --shadow-glow-accent: 0 0 20px rgba(123, 97, 255, 0.4);
+  --shadow-inner-glow: inset 0 0 20px rgba(0, 212, 255, 0.1);
+}
+
+/* ═══════════════════════════════════════════════════════
+   BASE STYLES
+   ═══════════════════════════════════════════════════════ */
+
+:root {
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-smooth: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+@media (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  body {
+    cursor: none;
+  }
+}
+
+input, textarea, select, [contenteditable] {
+  cursor: text !important;
+}
+
+a, button, [role="tab"] {
+  cursor: pointer !important;
+}
+
+html {
+  scroll-behavior: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  overflow-x: hidden;
+  font-feature-settings: "liga" 1, "calt" 1;
+}
+
+::selection {
+  background: rgba(0, 212, 255, 0.2);
+  color: #fff;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 212, 255, 0.3);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 212, 255, 0.5);
+}
+
+/* ═══════════════════════════════════════════════════════
+   UTILITY CLASSES
+   ═══════════════════════════════════════════════════════ */
+
+.glass {
+  position: relative;
+  background: linear-gradient(135deg, rgba(20,20,35,0.7), rgba(10,10,15,0.5));
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(30, 30, 46, 0.5);
+  overflow: hidden;
+}
+
+/* Glass card shimmer — subtle diagonal gradient (opt-in via .glass-shimmer) */
+.glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    transparent 0%,
+    transparent 40%,
+    rgba(255, 255, 255, 0.03) 50%,
+    transparent 60%,
+    transparent 100%
+  );
+  background-size: 200% 200%;
+  animation: none;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.glass-shimmer::before {
+  animation: shimmer 3s linear infinite;
+}
+
+.glass > *:not(.absolute) {
+  position: relative;
+  z-index: 1;
+}
+
+.glass-strong {
+  background: rgba(10, 10, 15, 0.8);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border: 1px solid var(--color-border);
+}
+
+.glow-text {
+  text-shadow: 0 0 10px rgba(0, 212, 255, 0.5),
+               0 0 30px rgba(0, 212, 255, 0.2);
+}
+
+.glow-box {
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.15),
+              inset 0 0 15px rgba(0, 212, 255, 0.05);
+}
+
+.section-container {
+  width: 100%;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .section-container {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-container {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .section-container {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+}
+
+.gradient-text {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(to right, var(--color-primary), var(--color-accent), var(--color-neon));
+}
+
+.grid-overlay {
+  background-image:
+    linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.terminal-text {
+  font-family: var(--font-mono);
+  color: rgba(0, 212, 255, 0.8);
+  text-shadow: 0 0 5px rgba(0, 212, 255, 0.3);
+}
+
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+/* ═══════════════════════════════════════════════════════
+   SECTION REVEAL — CLIP-PATH ANIMATION
+   ═══════════════════════════════════════════════════════ */
+
+.section-reveal {
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.section-reveal.visible {
+  clip-path: inset(0 0 0 0);
+}
+
+/* ═══════════════════════════════════════════════════════
+   SCROLL DOT ANIMATION
+   ═══════════════════════════════════════════════════════ */
+
+.scroll-dot {
+  animation: scrollDot 2s ease-in-out infinite;
+}
+
+@keyframes scrollDot {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50% { transform: translateY(6px); opacity: 0.3; }
+}
+
+/* ═══════════════════════════════════════════════════════
+   FOOTER SHIMMER LINE
+   ═══════════════════════════════════════════════════════ */
+
+.footer-shimmer-line {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 212, 255, 0.4),
+    rgba(123, 97, 255, 0.4),
+    rgba(0, 255, 136, 0.3),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s linear infinite;
+}
+
+/* ═══════════════════════════════════════════════════════
+   REDUCED MOTION
+   ═══════════════════════════════════════════════════════ */
+
+@media (pointer: coarse) {
+  .noise-overlay {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .noise-overlay {
+    display: none;
+  }
+
+  .section-reveal {
+    clip-path: none;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════
+   SECTION DIVIDERS & INTERACTIVE EFFECTS
+   ═══════════════════════════════════════════════════════ */
+
+/* Section divider */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(0, 212, 255, 0.15), rgba(123, 97, 255, 0.15), transparent);
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+/* Animated gradient text */
+.gradient-text-animated {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(90deg, var(--color-primary), var(--color-accent), var(--color-neon), var(--color-primary));
+  background-size: 300% 100%;
+  animation: gradientShift 4s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Glass interactive variant */
+.glass-interactive {
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+.glass-interactive:hover {
+  border-color: rgba(0, 212, 255, 0.3);
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.15), inset 0 0 15px rgba(0, 212, 255, 0.05);
+  transform: translateY(-2px);
+}
+
+/* Per-section depth glow */
+.section-glow {
+  position: relative;
+}
+.section-glow::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 400px;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: -1;
+}
